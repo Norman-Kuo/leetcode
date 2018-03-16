@@ -1,0 +1,50 @@
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        #nums1 = [1,1,2, 5, 7]
+        #nums2 = [1,2, 8, 3, 6, 1]
+        nums1=[2]
+        nums2=[1]
+        nums = nums1+ nums2
+
+        sort_array = []
+        for i in nums:
+            print('\n')
+            print(i)
+            if sort_array == []:
+                sort_array.append(i)
+            else:
+                for j in reversed(sort_array):
+                    indices = [k for k, x in enumerate(sort_array) if x == j]
+                    if i >= j:
+                        #print(indices)
+                        sort_array.insert(indices[-1]+1, i)
+                        break
+                    else:
+                        if len(sort_array) == 1:
+                            
+                        else:
+                            print(indices)
+                            new_position = sort_array[:indices[0]]
+                            print(new_position)
+                            for l in new_position:
+                                if i<l:
+                                    sort_array.insert(new_position[l], i)
+                                break
+
+            print(sort_array)
+        
+"""
+        if len(sort_array) %2 ==0:
+            median_index = (len(sort_array)/2)
+            median = (sort_array[int(median_index)-1] + sort_array[int(median_index)])/2              
+        else:
+            median_index = (len(sort_array)/2) - 0.5
+            median = sort_array[int(median_index)]
+            
+        return median
+"""
