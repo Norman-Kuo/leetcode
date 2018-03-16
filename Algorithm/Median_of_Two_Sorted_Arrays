@@ -5,16 +5,12 @@ class Solution:
         :type nums2: List[int]
         :rtype: float
         """
-        #nums1 = [1,1,2, 5, 7]
-        #nums2 = [1,2, 8, 3, 6, 1]
-        nums1=[2]
-        nums2=[1]
         nums = nums1+ nums2
 
         sort_array = []
         for i in nums:
-            print('\n')
-            print(i)
+            #print('\n')
+            #print(i)
             if sort_array == []:
                 sort_array.append(i)
             else:
@@ -26,19 +22,20 @@ class Solution:
                         break
                     else:
                         if len(sort_array) == 1:
-                            
+                            sort_array.insert(indices[0], i)
+                            break
                         else:
-                            print(indices)
-                            new_position = sort_array[:indices[0]]
-                            print(new_position)
+                            new_position = sort_array[:indices[0]+1]
+                            #print(new_position)
                             for l in new_position:
-                                if i<l:
-                                    sort_array.insert(new_position[l], i)
-                                break
+                                if i<=l:
+                                    sort_array.insert(sort_array.index(l), i)
+                                    break
+                            break
 
-            print(sort_array)
+            #print(sort_array)
         
-"""
+
         if len(sort_array) %2 ==0:
             median_index = (len(sort_array)/2)
             median = (sort_array[int(median_index)-1] + sort_array[int(median_index)])/2              
@@ -47,4 +44,3 @@ class Solution:
             median = sort_array[int(median_index)]
             
         return median
-"""
