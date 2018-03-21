@@ -5,7 +5,6 @@ class Solution:
         :type s: str
         :rtype: str
         """
-        #s = 'abcddcba'
         palindrome = ""
         if len(s) ==1:
             palindrome=s
@@ -14,16 +13,16 @@ class Solution:
                 string= s[i] + s[i+1]
                 #print(string[::-1])
                 if string[::-1] in s:
-                    index_string = [m.start() for m in re.finditer(string[::-1], s)]
+                    index_string = [m.start() for m in re.finditer('(?=%s)'%string[::-1], s)]
                     for j in index_string:
-                        forward = s[i:j+3]
+                        forward = s[i:j+2]
                         #print(forward)
                         if forward == forward[::-1]:
                             if len(forward) > len(palindrome):
                                 palindrome = forward
                 else:
                     single = s[i]
-                    index_string = [m.start() for m in re.finditer(single, s)]
+                    index_string = [m.start() for m in re.finditer('(?=%s)'%single, s)]
                     for j in index_string:
                         forward = s[i:j+1]
                         if forward == forward[::-1]:
