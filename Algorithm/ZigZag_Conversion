@@ -1,0 +1,33 @@
+class Solution:
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        #s='PAYPALISHIRING'
+        #numRows = 3
+ 
+        position_dict = {}
+        count = 1
+        condition = True
+        for i in s:
+            if count in position_dict:
+                position_dict[count].append(i)
+            else:
+                position_dict[count] = [i]
+            if count == 1:
+                condition = True
+            elif count ==numRows:
+                condition = False
+            
+            if condition == True:
+                count +=1
+            else:
+                count -=1
+        answer = ""
+        for i in position_dict:
+            for j in position_dict[i]:
+                answer += j
+        
+        return(answer)
