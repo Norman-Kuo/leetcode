@@ -1,0 +1,19 @@
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+
+        answer = ""
+        if str(x)[0] == '-':
+            answer = str(x)[0] + str(x)[1:][::-1]
+        else:
+            answer = str(x)[::-1]
+        
+
+        answer = int(answer)
+
+        if answer > ((2**32)/2) or answer < -((2**32)/2):
+            answer = 0
+        return answer
